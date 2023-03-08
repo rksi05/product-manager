@@ -13,23 +13,23 @@ export class WeaponsService {
         return weps.map(c => ({ id: c.id, 
             name: c.name,
             user: c.user,
-            backstory: c.backstory,
+            type: c.type,
             img: c.img
         }));
     }
 
-    async insertWeapons(name: string, user:string, backstory: string, img:string) {
-        const newWep = new this.weaponsModel({ name: name, user: user, backstory: backstory, img: img });
+    async insertWeapons(name: string, user:string, type: string, img:string) {
+        const newWep = new this.weaponsModel({ name: name, user: user, type: type, img: img });
         const result = await newWep.save();
         return result.id as string;
     }
 
     async getWeaponById(wepId: string) {
         const wep = await (await this.findWeapon(wepId));
-        return { name: wep.name, user: wep.user, backstory: wep.backstory, img: wep.img };
+        return { name: wep.name, user: wep.user, type: wep.type, img: wep.img };
     }
 
-    async updateWeaponById(wepId: string, name: string, user:string, backstory: string, img:string) {
+    async updateWeaponById(wepId: string, name: string, user:string, type: string, img:string) {
         const updatedWeapon = await this.findWeapon(wepId);
 
         if (name) {
@@ -38,8 +38,8 @@ export class WeaponsService {
         if (user) {
             updatedWeapon.user = user;
         }
-        if (backstory) {
-            updatedWeapon.backstory = backstory;
+        if (type) {
+            updatedWeapon.type = type;
 
         }
         if (img) {

@@ -43,9 +43,9 @@ export class ProductsController {
         return null;
     }
 
-    @Delete(':id')
-    async deleteProductById(@Param('id') charId: string,) {
-        await this.charsService.deleteProductById(charId);
+    @Delete(':name')
+    async deleteProductByName(@Param('name') charName: string,) {
+        await this.charsService.deleteProductByName(charName);
         return null;
     }
 

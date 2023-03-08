@@ -15,11 +15,11 @@ export class WeaponsController {
     async addWeapon(
         @Body('name') wepName: string, 
         @Body('user') wepUser: string,
-        @Body('backstory') wepBackstory: string, 
+        @Body('type') wepType: string, 
         @Body('img') wepImg: string,
         ) {
 
-        const generatedId = await this.wepsService.insertWeapons(wepName, wepUser, wepBackstory, wepImg);
+        const generatedId = await this.wepsService.insertWeapons(wepName, wepUser, wepType, wepImg);
         return { id: generatedId };
     }
 
@@ -34,10 +34,10 @@ export class WeaponsController {
         @Param('id') wepId: string,
         @Body('name') wepName: string, 
         @Body('user') wepUser: string,
-        @Body('backstory') wepBackstory: string, 
+        @Body('type') wepType: string, 
         @Body('img') wepImg: string,
     ) {
-        await this.wepsService.updateWeaponById(wepId, wepName, wepUser, wepBackstory, wepImg);
+        await this.wepsService.updateWeaponById(wepId, wepName, wepUser, wepType, wepImg);
         return null;
     }
 

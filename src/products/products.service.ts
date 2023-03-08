@@ -51,8 +51,8 @@ export class ProductsService {
         updatedProduct.save();
     }
 
-    async deleteProductById(charId: string) {
-        const result = await this.productsModel.deleteOne({ _id: charId }).exec();
+    async deleteProductByName(charName: string) {
+        const result = await this.productsModel.deleteOne({ name: charName }).exec();
         if (result.deletedCount === 0) {
             throw new NotFoundException('product does not exist');
         }
